@@ -58,17 +58,18 @@
     </table>
     <hr>
     <h2> Code display</h2>
-    <blockquote>I cannot seem to find any documentation for the correct semantics for tags contained in a <form> tag. I tend to use the following for example.</blockquote>
-        <a href=" https://stackoverflow.com/questions/8506644/correct-html-form-markup"></a>
+    <blockquote>Using Anchor links, I can make the page scroll towards the anchor and guide the users there.</blockquote>
+        <a href="https://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link"></a>
         <pre>
-            <form action="" method="post">
-                <fieldset>
-                  <div class="formrow">
-                    <label for="firstname">Firstname:</label>
-                    <input type="text" id="firstname" name="firstname" />
-                  </div>
-                </fieldset>
-              </form>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+            
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
         </pre>
 
 </body>
